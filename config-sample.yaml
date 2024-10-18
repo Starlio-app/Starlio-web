@@ -2,6 +2,7 @@ server:
     host: '0.0.0.0'
     ssl_privkey: 'CertSSL/privkey.key'
     ssl_cert: 'CertSSL/cert.pem'
+    work: true
 analytics:
     domain: 'example.com'
     endpoint: 'https://plausible.io'
