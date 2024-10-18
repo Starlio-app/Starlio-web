@@ -1,13 +1,19 @@
+import uvicorn
+import yaml
+
 from fastapi.staticfiles import StaticFiles
 from starlette.responses import FileResponse
 from fastapi import FastAPI
-import uvicorn
-import os
+from src.middleware.plausible_analytics import PlausibleAnalytics
+
+config = yaml.safe_load(open('./config.yaml'))
 
 from src.routes import index
 from src.routes import wallpaper
 
 app = FastAPI()
+
+app.middleware('http')(PlausibleAnalytics())
 
 app.include_router(index.router)
 app.include_router(wallpaper.router)
@@ -17,12 +23,12 @@ app.mount('/.well-known/', StaticFiles(directory='./.well-known/'))
 
 
 @app.get('/app-ads.txt')
-async def app_ads(req):
+async def app_ads():
     return FileResponse('./app-ads.txt')
 
 
 @app.get('/robots.txt')
-async def robots_txt(req):
+async def robots_txt():
     return FileResponse('./robots.txt')
 
 
@@ -31,4 +37,13 @@ async def not_found(req, __):
     return FileResponse('./src/web/html/error/404.html')
 
 if __name__ == '__main__':
-    uvicorn.run(app, host="0.0.0.0", port=int(os.environ['PORT']))
+    uvicorn.run(app,
+                host=config['server']['host'],
+                port=8000,
+                ssl_keyfile=config['server']['ssl_privkey']
+                if config['server']['ssl_work']
+                else None,
+                ssl_certfile=config['server']['ssl_cert']
+                if config['server']['ssl_work']
+                else None
+                )
