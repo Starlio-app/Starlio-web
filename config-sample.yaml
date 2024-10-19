@@ -5,5 +5,5 @@ server:
     work: true
 analytics:
     domain: 'example.com'
-    endpoint: 'https://plausible.io'
+    endpoint: 'https://plausible.io/api/event/'
     token: ''
