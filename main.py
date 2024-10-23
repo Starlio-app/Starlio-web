@@ -1,3 +1,5 @@
+import http
+
 import uvicorn
 import yaml
 
@@ -13,7 +15,8 @@ from src.routes import wallpaper
 
 app = FastAPI()
 
-app.middleware('http')(PlausibleAnalytics())
+if config['analytics']['token']:
+    app.middleware('http')(PlausibleAnalytics())
 
 app.include_router(index.router)
 app.include_router(wallpaper.router)
@@ -34,7 +37,7 @@ async def robots_txt():
 
 @app.exception_handler(404)
 async def not_found(req, __):
-    return FileResponse('./src/web/html/error/404.html')
+    return FileResponse('./src/web/html/error/404.html', status_code=http.HTTPStatus.NOT_FOUND)
 
 if __name__ == '__main__':
     uvicorn.run(app,
