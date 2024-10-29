@@ -14,7 +14,7 @@ class PlausibleAnalytics:
         user_agent_parsed = ua_parse(user_agent)
 
         if HTTPStatus(response.status_code).is_client_error:
-            return 
+            return response
 
         event = {
             "domain": config['analytics']['domain'],
