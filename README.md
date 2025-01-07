@@ -6,7 +6,7 @@
 ### The project site is under the Apache-2.0 [license](NOTICE)
 ```
 EveryNASA Copyright 2022-2023 Redume
-Starlio Copyright 2023-2024 Redume
+Starlio Copyright 2023-2025 Redume
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
