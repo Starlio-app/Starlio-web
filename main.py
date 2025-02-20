@@ -22,7 +22,7 @@ from starlette.responses import FileResponse
 from src.middleware.plausible_analytics import PlausibleAnalytics
 from src.routes import index, wallpaper
 
-config = yaml.safe_load(open('config.yaml'))
+config = yaml.safe_load(open('config.yaml', encoding='utf-8'))
 
 app = FastAPI()
 

@@ -17,14 +17,14 @@ import yaml
 import httpx
 from user_agents import parse as ua_parse
 
-config = yaml.safe_load(open('./config.yaml'))
+config = yaml.safe_load(open('./config.yaml', encoding='utf-8'))
 
 class PlausibleAnalytics:
     """
     Middleware for sending analytics data to Plausible Analytics
     after processing each request.
     """
-    
+
     async def __call__(self, request, call_next):
         """
         Called for each request, sends an event to Plausible with
@@ -37,7 +37,7 @@ class PlausibleAnalytics:
         Returns:
             Response: FastAPI response object.
         """
-        
+
         response = await call_next(request)
 
         user_agent = request.headers.get('user-agent', 'unknown')
