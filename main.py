@@ -5,8 +5,10 @@ middleware, static file serving, and error handling.
 Routes:
 - `/app-ads.txt`: Serves the `app-ads.txt` file.
 - `/robots.txt`: Serves the `robots.txt` file.
-- `/wallpaper/today`: Served by the wallpaper router, fetches today's wallpaper.
-- `/wallpaper/{day}`: Served by the wallpaper router, fetches the wallpaper for a specific day.
+- `/wallpaper/today`: Served by the wallpaper router, 
+fetches today's wallpaper.
+- `/wallpaper/{day}`: Served by the wallpaper router, 
+fetches the wallpaper for a specific day.
 """
 
 import http
@@ -46,7 +48,10 @@ async def robots_txt():
 
 @app.exception_handler(404)
 async def not_found(req, __):
-    return FileResponse('./src/web/html/error/404.html', status_code=http.HTTPStatus.NOT_FOUND)
+    return FileResponse(
+        './src/web/html/error/404.html', 
+        status_code=http.HTTPStatus.NOT_FOUND
+        )
 
 if __name__ == '__main__':
     uvicorn.run(app,

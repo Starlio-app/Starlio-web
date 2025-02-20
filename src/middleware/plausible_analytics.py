@@ -1,8 +1,10 @@
 """
-This module contains the PlausibleAnalytics middleware for sending analytics events
+This module contains the PlausibleAnalytics middleware 
+for sending analytics events
 to Plausible Analytics after processing each request.
 
-The middleware collects information about the request, such as the HTTP method, status code,
+The middleware collects information about the request, 
+such as the HTTP method, status code,
 user agent, and source, and sends this data to the Plausible Analytics API.
 
 In case of any client-side or server-side errors, no event is sent, 
@@ -51,8 +53,10 @@ class PlausibleAnalytics:
             "props": {
                 "method": request.method,
                 "statusCode": response.status_code,
-                "browser": f"{user_agent_parsed.browser.family} {user_agent_parsed.browser.version_string}",
-                "os": f"{user_agent_parsed.os.family} {user_agent_parsed.os.version_string}",
+                "browser": f"{user_agent_parsed.browser.family}" \
+                f"{user_agent_parsed.browser.version_string}",
+                "os": f"{user_agent_parsed.os.family}" \
+                f"{user_agent_parsed.os.version_string}",
                 "source": request.headers.get('referer', 'direct'),
             },
         }
