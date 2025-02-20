@@ -32,7 +32,7 @@ async def today_wallpaper(request: Request):
     Returns:
         HTMLResponse: The wallpaper page or 404 error page.
     """
-    res = requests.get(f'https://api.starlio.space/last', timeout=3)
+    res = requests.get('https://api.starlio.space/last', timeout=3)
 
     if HTTPStatus(res.status_code).is_server_error or HTTPStatus(res.status_code).is_client_error:
         return FileResponse('../web/html/error/404.html', status_code=HTTPStatus.NOT_FOUND)
@@ -57,7 +57,7 @@ async def wallpaper(request: Request, day):
     Returns:
         HTMLResponse: The wallpaper page or 404 error page.
     """
-    res = requests.get(f'https://api.starlio.space/wallpaper/{day}', timeout=3)
+    res = requests.get('https://api.starlio.space/wallpaper/{day}', timeout=3)
 
     if (HTTPStatus(res.status_code).is_server_error
             or HTTPStatus(res.status_code).is_client_error
