@@ -1,3 +1,14 @@
+"""
+This module defines the main FastAPI application, including route handlers,
+middleware, static file serving, and error handling.
+
+Routes:
+- `/app-ads.txt`: Serves the `app-ads.txt` file.
+- `/robots.txt`: Serves the `robots.txt` file.
+- `/wallpaper/today`: Served by the wallpaper router, fetches today's wallpaper.
+- `/wallpaper/{day}`: Served by the wallpaper router, fetches the wallpaper for a specific day.
+"""
+
 import http
 
 import uvicorn
