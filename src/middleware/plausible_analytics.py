@@ -9,9 +9,10 @@ In case of any client-side or server-side errors, no event is sent,
 and the response is returned as usual.
 """
 
-import httpx
-import yaml
 from http import HTTPStatus
+
+import yaml
+import httpx
 from user_agents import parse as ua_parse
 
 config = yaml.safe_load(open('./config.yaml'))

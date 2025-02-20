@@ -13,16 +13,14 @@ import http
 
 import uvicorn
 import yaml
-
+from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from starlette.responses import FileResponse
-from fastapi import FastAPI
+
 from src.middleware.plausible_analytics import PlausibleAnalytics
+from src.routes import index, wallpaper
 
-config = yaml.safe_load(open('./config.yaml'))
-
-from src.routes import index
-from src.routes import wallpaper
+config = yaml.safe_load(open('config.yaml'))
 
 app = FastAPI()
 
