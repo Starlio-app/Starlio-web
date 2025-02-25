@@ -9,11 +9,20 @@ img {
     cursor: pointer;
 }
 
+.wallpaper-placeholder {
+    border-radius: 16px;
+    display: block;
+    background-color: #8C8C8C;
+}
+
 @media (min-width: 0) {
+    .wallpaper-placeholder {
+        width: 85%;
+    }
     .wallpaper-img{
         width: 85%;
         border-radius: 16px;
-        display: block;
+        display: none;
         margin-left: auto;
         margin-right: auto
     }
@@ -60,6 +69,9 @@ img {
 }
 
 @media (min-width: 768px) {
+    .wallpaper-placeholder {
+        min-width: 30%
+    }
     .get-it-on {
         display: flex;
         margin: 5% auto 3% auto;
@@ -92,10 +104,15 @@ img {
         box-sizing: border-box;
     }
 
-    .wallpaper-img{
+    .wallpaper-placeholder {
+        width: 30%;
+        display: block;
+    }
+
+    .wallpaper-img {
         width: 30%;
         border-radius: 16px;
-        display: block;
+        display: none;
         margin-left: auto;
         margin-right: auto;
         object-fit: cover;
@@ -135,10 +152,15 @@ img {
 }
 
 @media (min-width: 1200px) {
+    .wallpaper-placeholder {
+        width: 30%;
+    }
+
     .wallpaper-img {
         width: 30%;
         border-radius: 16px;
         float: left;
+        display: none;
     }
 
     .wallpaper-text {
@@ -162,7 +184,11 @@ img {
 }
 
 @media (min-width: 1400px) {
+    .wallpaper-placeholder {
+        min-width: 20%;
+    }
     .wallpaper-img {
         min-width: 20%;
+        display: none;
     }
 }
